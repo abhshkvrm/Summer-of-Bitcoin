@@ -22,7 +22,7 @@
 
 
 ## Problem Statement
-You can get the complete problem statement [sb_README.pdf](https://github.com/abhshkvrm/README-cheatsheet/blob/16d2219f0cd19bf5dbcd09d7a3c4dcbd66143b6b/sb_README.pdf)
+You can get the complete problem statement [sb_README.pdf](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/739f2efc771380a3d20fc2c0eda4bd714098acc9/sb_README.pdf)
  <br>  
  File mempool.csv contains transactions in the memory pool and we need to find the optimal transactions to process. 
  The file contains : 
