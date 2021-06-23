@@ -4,14 +4,15 @@
 `main.py`
 > A global program that matches students with open source, free software and technology-related organizations working on bitcoin to write code and become part of these communities while making some BTC along the way!
 > For futher info [_here_](https://summerofbitcoin.org). <!-- If you have the project hosted somewhere, include the link here. -->
-# Code challenge for Summer of Bitcoin
+# Code challenge for Summer of Bitcoin 2021
 ## Table of Contents
-* [Problem Statement](#general-information)
+* [Problem Statement](#problem-statement)
 * [Technologies Used](#technologies-used)
-* [Screenshots](#screenshots)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Project Status](#project-status)
+* [Data Extraction](#data-extraction)
+* [Approach 1 (Brute Force)](#aproach-1-(Brute-Force))
+* [Approach 2 (Knapsack Problem)](#aproach-1-(Knapsack-Problem))
 * [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
