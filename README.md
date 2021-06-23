@@ -138,7 +138,7 @@ I have printed the list of txis which we will get on doing simple Knapsack probl
 
 # Final Approach (Most Optimal)
 
-In the problem statement, there are also dependencies, i.e., the parent transaction, as we have to maximize the fee to the miner while having the constraint in weights. Somehow, I thought of minimizing the weight/fees ratio, i.e., the fees should be higher, and the weight should be lower. And we only need as many small values of this ratio as possible. Still, in my opinion, the problem is also dependencies, or as per my hypothesis, I can't do this by **greedy** approach. Hence, I have to take something different, and we have to encounter the dependencies, so we have to link the dependencies, which we can do quickly using graphs. With a decent level of knowledge of graphs, I studied **DFS** and got the basic idea that parents have to be processed first, then children as per the problem statement. So I have to build a somehow recursive DFS solution that ensures proper ordering, for deep information visit [FinalCode.ipynb](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/56175189f2679ea1f71116d81b6d57aa9ac369a1/Final_Approach.ipynb) . The arrangement is made by considering the fact of minimizing the weight/fees ratio!
+In the problem statement, there are also dependencies, i.e., the parent transaction, as we have to maximize the fee to the miner while having the constraint in weights. Somehow, I thought of minimizing the weight/fees ratio, i.e., the fees should be higher, and the weight should be lower. And we only need as many small values of this ratio as possible. Still, in my opinion, the problem is also dependencies, or as per my hypothesis, I can't do this by **greedy** approach. Hence, I have to take something different, and we have to encounter the dependencies, so we have to link the dependencies, which we can do quickly using graphs. With a decent level of knowledge of graphs, I studied **DFS** and got the basic idea that parents have to be processed first, then children as per the problem statement. So I have to build a somehow recursive DFS solution that ensures proper ordering, for deep information visit [Final_Approach.ipynb](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/300b75e77244a510b472774e916825cb98aa7a2f/Final_Approach.ipynb)or [final_approach.py](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/300b75e77244a510b472774e916825cb98aa7a2f/final_approach.py) . The arrangement is made by considering the fact of minimizing the weight/fees ratio!
 
 ## Depth First Search Algorithm
 
@@ -171,7 +171,7 @@ The space complexity of the algorithm is `O(V)`.
 
 ## Results
 
-You can look at the code in the jupyter notebook, which gives a better insight into what I have done at `final_approach.ipynb` or `final_approach.py`. By applying the above approach, I got the `block.txt` which contains the txids, separated by newlines, which make a valid block, maximizing the fee to the miner. Some of the different results are as follows, which give some highlights of what I have done.
+You can look at the code in the jupyter notebook, which gives a better insight into what I have done at `final_approach.ipynb` or `final_approach.py`. By applying the above approach, I got the [block.txt](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/300b75e77244a510b472774e916825cb98aa7a2f/block.txt) which contains the txids, separated by newlines, which make a valid block, maximizing the fee to the miner. Some of the different results are as follows, which give some highlights of what I have done.
 
 
 
