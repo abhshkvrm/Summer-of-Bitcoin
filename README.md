@@ -101,7 +101,7 @@ We can call it a Brute force approach or a recursive apporach rather. In this ap
 
 # Approach 2 (Knapsack Problem)
 
-This approach is more optimal in comparison to the Brute force or recursive that we have discussed above. Seeing this problem and analyzing no one can deny it is the standard 0-1 Knapsack Problem. So I have attempted to solve the problem using this approach. In this approach, I have just ignored the parent and children relationship for a moment and only encountered three things, i.e., `transaction_id`, `weight`, `fees`, and the `total weight`. To get a better feel of what I have done, kindly visit the code `Approach_2.py` or the notebook [Approach2.ipynb](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/be6533226bfcfc8ba771bdb13df8031fb34efbe8/Approach_2.ipynb). The source code of the above approach which I have followed is [this](https://www.geeksforgeeks.org/python-program-for-dynamic-programming-set-10-0-1-knapsack-problem/)
+This approach is more optimal in comparison to the Brute force or recursive that we have discussed above. Seeing this problem and analyzing no one can deny it is the standard 0-1 Knapsack Problem. So I have attempted to solve the problem using this approach. In this approach, I have just ignored the parent and children relationship for a moment and only encountered three things, i.e., `transaction_id`, `weight`, `fees`, and the `total weight`. To get a better feel of what I have done, kindly visit the code [Approach_2.py](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/56175189f2679ea1f71116d81b6d57aa9ac369a1/approach_2.py) or the notebook [Approach_2.ipynb](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/be6533226bfcfc8ba771bdb13df8031fb34efbe8/Approach_2.ipynb). The source code of the above approach which I have followed is [this](https://www.geeksforgeeks.org/python-program-for-dynamic-programming-set-10-0-1-knapsack-problem/)
 
 ## What is Knapsack Problem ?
 
@@ -127,25 +127,24 @@ The `knapsack problem` is a problem in combinatorial optimization: Given a set o
 
 ### Time Complexity of Knapsack
 
-This algorithm takes `θ(n, w)` times as the matrix K in the code  has `(n + 1).(w + 1)` entries, where each entry requires` θ(1) `time to compute.
+This algorithm takes `θ(n, w)` times as the matrix K in the [code](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/be6533226bfcfc8ba771bdb13df8031fb34efbe8/Approach_2.ipynb)  has `(n + 1).(w + 1)` entries, where each entry requires` θ(1) `time to compute.
 
 ## Problem Faced
 Though I don't get not much hint how to include the parent children relationship in the standard knapsack, I tried many stuffs but ended up getting nothing. Also the data set is too big I can't even take the max_weight to be 4000000 (given in the problem statement) it throws Memory error. I have run my code taking it to be 40000
 
-## Results
-I have printed the list of txis which we will get on doing simple Knapsack problem approach but for the smaller 
+I have printed the list of txis which we will get on doing simple Knapsack problem approach but for the smaller dataset. Now Move to next and last approach that I have applied.
 
 <br>
 
 # Final Approach (Most Optimal)
 
-In the problem statement, there are also dependencies, i.e., the parent transaction, as we have to maximize the fee to the miner while having the constraint in weights. Somehow, I thought of minimizing the weight/fees ratio, i.e., the fees should be higher, and the weight should be lower. And we only need as many small values of this ratio as possible. Still, in my opinion, the problem is also dependencies, or as per my hypothesis, I can't do this by **greedy** approach. Hence, I have to take something different, and we have to encounter the dependencies, so we have to link the dependencies, which we can do quickly using graphs. With a decent level of knowledge of graphs, I studied **DFS** and got the basic idea that parents have to be processed first, then children as per the problem statement. So I have to build a somehow recursive DFS solution that ensures proper ordering, for deep information visit [FinalCode.ipynb](https://github.com/abhshkvrm/README-cheatsheet/blob/71d887723360e84629a5c0bb5f887169e4d0dcdd/Untitled1.ipynb) . The arrangement is made by considering the fact of minimizing the weight/fees ratio!
+In the problem statement, there are also dependencies, i.e., the parent transaction, as we have to maximize the fee to the miner while having the constraint in weights. Somehow, I thought of minimizing the weight/fees ratio, i.e., the fees should be higher, and the weight should be lower. And we only need as many small values of this ratio as possible. Still, in my opinion, the problem is also dependencies, or as per my hypothesis, I can't do this by **greedy** approach. Hence, I have to take something different, and we have to encounter the dependencies, so we have to link the dependencies, which we can do quickly using graphs. With a decent level of knowledge of graphs, I studied **DFS** and got the basic idea that parents have to be processed first, then children as per the problem statement. So I have to build a somehow recursive DFS solution that ensures proper ordering, for deep information visit [FinalCode.ipynb](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/56175189f2679ea1f71116d81b6d57aa9ac369a1/Final_Approach.ipynb) . The arrangement is made by considering the fact of minimizing the weight/fees ratio!
 
 ## Depth First Search Algorithm
 
 ![Example screenshot](./img/Depth_first_search_python.png)
 
-**Depth-first search (DFS)**, is an algorithm for tree traversal on graph or tree data structures. It can be implemented easily using recursion and data structures like dictionaries and sets. Pick any node. If it is unvisited, mark it as visited and recur on all its adjacent nodes. Repeat until all the nodes are visited, or the node to be searched is found.
+**Depth-first search (DFS)**, is an algorithm for tree traversal on `graph` or tree data structures. It can be implemented easily using recursion and data structures like dictionaries and sets. Pick any node. If it is unvisited, mark it as visited and recur on all its adjacent nodes. Repeat until all the nodes are visited, or the node to be searched is found.
 
 ### Pseudo Code of DFS
 
