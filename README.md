@@ -12,7 +12,7 @@
 * [Usage](#usage)
 * [Data Extraction](#data-extraction)
 * [Approach 1 (Brute Force)](#approach-1-brute-force)
-* [Approach 2 (Knapsack Problem)](#approach-1-knapsack-problem)
+* [Approach 2 (Knapsack Problem)](#approach-2-knapsack-problem)
 * [Final Approach (Most Optimal)](#final-approach-most-optimal)
 * [Room for Improvement](#room-for-improvement)
 * [References](#references)
