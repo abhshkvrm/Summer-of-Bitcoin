@@ -1,7 +1,7 @@
 # Summer of Bitcoin
 
 [![Summerbigicon](./img/summerbig1.png)](https://summerofbitcoin.org)
-`main.py`
+
 > A global program that matches students with open source, free software and technology-related organizations working on bitcoin to write code and become part of these communities while making some BTC along the way!
 > For futher info [_here_](https://summerofbitcoin.org). <!-- If you have the project hosted somewhere, include the link here. -->
 # Code challenge for Summer of Bitcoin 2021
@@ -11,9 +11,11 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Data Extraction](#data-extraction)
-* [Approach 1 (Brute Force)](#aproach-1-(Brute-Force))
-* [Approach 2 (Knapsack Problem)](#aproach-1-(Knapsack-Problem))
+* [Approach 1 (Brute Force)](#aproach-1-brute-force)
+* [Approach 2 (Knapsack Problem)](#aproach-1-knapsack-problem)
+* [Final Approach (Most Optimal)](#final-approach-most-optimal)
 * [Room for Improvement](#room-for-improvement)
+* [References](#references)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 <!-- * [License](#license) -->
