@@ -24,7 +24,7 @@
 ## Problem Statement
 You can get the complete problem statement [sb_README.pdf](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/739f2efc771380a3d20fc2c0eda4bd714098acc9/sb_README.pdf)
  <br>  
- File mempool.csv contains transactions in the memory pool and we need to find the optimal transactions to process. 
+ File [mempool.csv](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/be6533226bfcfc8ba771bdb13df8031fb34efbe8/mempool.csv) contains transactions in the memory pool and we need to find the optimal transactions to process. 
  The file contains : 
    - transaction id
    - Fee
@@ -33,12 +33,12 @@ You can get the complete problem statement [sb_README.pdf](https://github.com/ab
 
 <b>Constraint :</b>
 
-   - The total weight of transactions in a block must not exceed 4,000,000 weight. For this exercise assume that there is no coinbase transaction.
+   - The total weight of transactions in a block must not exceed `4,000,000` weight. For this exercise assume that there is no coinbase transaction.
    - A transaction may only appear in a block if all of its parents appear earlier in the block.
 
 
 <b> Task: </b>
-   - The output from the program should be txids, separated by newlines, which make a valid block, maximizing the fee to the miner. Transactions MUST appear in order
+   - The output from the program should be txids, separated by newlines, which make a valid block, maximizing the fee to the miner. Transactions **MUST** appear in order
 (no transaction should appear before one of its parents)
 <br>
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
@@ -95,19 +95,19 @@ You need some configuration before starting Jupyter notebook remotely. See [Runn
 
 
 # Approach 1 (Brute Force)
-We can call it a Brute force approach or a recursive apporach rather. In this approach we will take every possible combination of parent and children satisfying the given condition and will do it using brute force method. On analyzing the dataset it is more than 5000 and taking the worst case time complexity it will be O(2^n) which is approximately 2^5000 which I don't think I will be able to solve in my PC. So rather than wasting time on this I prefered other method. Though it will work perfectly in small dataset. Moving on to the next approach.
+We can call it a Brute force approach or a recursive apporach rather. In this approach we will take every possible combination of parent and children satisfying the given condition and will do it using brute force method. On analyzing the dataset it is more than 5000 and taking the worst case time complexity it will be `O(2^n)` which is approximately 2^5000 which I don't think I will be able to solve in my PC. So rather than wasting time on this I prefered other method. Though it will work perfectly in small dataset. Moving on to the next approach.
 <br>
 
 
 # Approach 2 (Knapsack Problem)
 
-This approach is more optimal in comparison to the Brute force or recursive that we have discussed above. Seeing this problem and analyzing no one can deny it is the standard 0-1 Knapsack Problem. So I have attempted to solve the problem using this approach. In this approach, I have just ignored the parent and children relationship for a moment and only encountered three things, i.e., transaction_id, weight, fees, and the total weight. To get a better feel of what I have done, kindly visit the code Approach2.py or the notebook Approach2.ipynb
+This approach is more optimal in comparison to the Brute force or recursive that we have discussed above. Seeing this problem and analyzing no one can deny it is the standard 0-1 Knapsack Problem. So I have attempted to solve the problem using this approach. In this approach, I have just ignored the parent and children relationship for a moment and only encountered three things, i.e., `transaction_id`, `weight`, `fees`, and the `total weight`. To get a better feel of what I have done, kindly visit the code `Approach_2.py` or the notebook [Approach2.ipynb](https://github.com/abhshkvrm/Summer-of-Bitcoin/blob/be6533226bfcfc8ba771bdb13df8031fb34efbe8/Approach_2.ipynb). The source code of the above approach which I have followed is [this](https://www.geeksforgeeks.org/python-program-for-dynamic-programming-set-10-0-1-knapsack-problem/)
 
 ## What is Knapsack Problem ?
 
-The knapsack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. Yeah you heard it right! This is the problem statement that we are having inspite having extra condition of parent children relationship. 
+The `knapsack problem` is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. Yeah you heard it right! This is the problem statement that we are having inspite having extra condition of parent children relationship. 
 
-0-1 Knapsack cannot be solved by Greedy approach. Greedy approach does not ensure an optimal solution. In many instances, Greedy approach may give an optimal solution.
+`0-1` Knapsack cannot be solved by Greedy approach. Greedy approach does not ensure an optimal solution. In many instances, `Greedy` approach may give an optimal solution.
 
 ### Pseudo Code of 0-1 Knapsack 
 
@@ -127,7 +127,7 @@ The knapsack problem is a problem in combinatorial optimization: Given a set of 
 
 ### Time Complexity of Knapsack
 
-This algorithm takes θ(n, w) times as table c has (n + 1).(w + 1) entries, where each entry requires θ(1) time to compute.
+This algorithm takes `θ(n, w)` times as the matrix K in the code  has `(n + 1).(w + 1)` entries, where each entry requires` θ(1) `time to compute.
 
 ## Problem Faced
 Though I don't get not much hint how to include the parent children relationship in the standard knapsack, I tried many stuffs but ended up getting nothing. Also the data set is too big I can't even take the max_weight to be 4000000 (given in the problem statement) it throws Memory error. I have run my code taking it to be 40000
