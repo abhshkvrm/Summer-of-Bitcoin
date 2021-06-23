@@ -42,38 +42,43 @@ Here comma seperated file has been extracted and temporarily stored it in differ
 """
 
 def read():
-    with open("mempool.csv", "r") as f:                               # read the mempool.csv
-        for line in f.readlines()[1:]:                                # reading line by line of the csv
+    with open("mempool.csv", "r") as f:          # read the mempool.csv
+        for line in f.readlines()[1:]:           # reading line by line of the csv
             tx_id, fe, wgt, parents = line.strip().split(",")     
-            fe, wgt = int(fe), int(wgt)                               # convert the fee and weight from string to integer
-            fees[tx_id] = fe                                          # Saving weight_per_fee per tx_id (node), with the help of this we will generate graph
+            fe, wgt = int(fe), int(wgt)          # convert the fee and weight from string to integer
+            fees[tx_id] = fe                                          
+            # Saving weight_per_fee per tx_id (node), with the help of this we will generate graph
             weights[tx_id] = wgt
-            weight_per_fee[tx_id] = wgt /fe                           # dictionary to store weight per fee corresponding to each transaction_id
-            graph[tx_id] = []                                         # initializing empty graph ( nothing else just a dictionary)              
-            visited[tx_id] = False                                    # assigning the node as not visited (initially)
-            if parents == "":                                         # if there is no parent id we not have to worry just continue
+            weight_per_fee[tx_id] = wgt /fe     
+                                                 # dictionary stores weight per fee corresponding to each tx_id
+            graph[tx_id] = []                   # initializing empty graph ( nothing else just a dictionary)                                                                            
+            visited[tx_id] = False              # assigning the node as not visited (initially)
+            if parents == "":                   # if there is no parent id we not have to worry just continue
                 continue
-            for parent in parents.strip().split(";"):                 # wherever we get parents_id not empty we check how many are there and storing them in corresponding dictionary
-                graph[tx_id].append(parent)                           #stores all the parent tx_id in a dictionary and just appending it in graph
+            for parent in parents.strip().split(";"):                 
+              # wherever we get parents_id not empty we check how many are there and storing them in corresponding dictionary
+                graph[tx_id].append(parent)     # stores all the parent tx_id in a dictionary and just appending it in graph
 
 """# Function for Recursive Depth First Search 
 Defines a function dfs, a recursive function that DFSs the mempool graph and puts childrens in order first. We are basically creating the ordered nodes so our main aim here is to go through the parents first so that thery can be inserted in the ordered nodes. 
 """
 
 def dfs(tx_id):
-    if visited[tx_id]:                      # If the node is already visited i.e. visited[tx_id]=True there is no need to parse it again
+    if visited[tx_id]:      # If the node is already visited i.e. visited[tx_id]=True there is no need to parse it again
         return
-    id = 0                                  # This Node can be placed from start offset in the case of no dependencies                                    
-    for g in graph[tx_id]:                  # Parse through the parents first so that they are already inserted inside the ordered nodes
-        dfs(g)                              #  calling recursively
+    id = 0                         # This Node can be placed from start offset in the case of no dependencies                                    
+    for g in graph[tx_id]:         # Parse through the parents first so that they are already inserted inside the ordered nodes
+        dfs(g)                           #  calling recursively
         
     for g in graph[tx_id]:                  # Find the maximum index in final[] for this node's parents
-        for k, obj in enumerate(final):     # Enumerate() method in python adds a counter to an iterable and returns it in a form of enumerate object.
+        for k, obj in enumerate(final):     
+          # Enumerate() method in python adds a counter to an iterable and returns it in a form of enumerate object.
             if obj[0] == g:
                 id = max(id, k+1)           # storing the max in id and then break from the loop
                 break
 
-    while id < len(final):                  # Loop from this maximum index and put in this tx just before the weight/fee is above this tx's weight/fee
+    while id < len(final):                  
+      # Loop from this maximum index and put in this tx just before the weight/fee is above this tx's weight/fee
         if final[id][1] >= weight_per_fee[tx_id]:
             break                            
         id = id+1                            # increment the id 
@@ -92,16 +97,19 @@ def generate_block(max_weight=4000000):
     count =0                                       # sums up the number of transaction
     with open("block.txt", "w") as f:              # opens the block.txt file and we will write on it                    
         for tx in final:
-            if weights[tx[0]] > max_weight:        # checking the condition that the weight that we are putting in doesn't crosses max_weight i.e.4000000
+            if weights[tx[0]] > max_weight:        
+              # checking the condition that the weight that we are putting in doesn't crosses max_weight i.e.4000000
                 break                              # if so then break from the loop
-            f.write(tx[0] + "\n")                  # adding only the transaction id to the block.txt file and leaving line as specified in the Problem statement
+            f.write(tx[0] + "\n")                  
+            # adding only the transaction id to the block.txt file and leaving line as specified in the Problem statement
             s =s+fees[tx[0]]
             s1=s1+ weights[tx[0]]                  # adding the respective values for each iteration
             #print(str(s)+ " "+ str(s1))
             max_weight -= weights[tx[0]]           # updating the max_weight
             count=count+1
             
-    percentage_of_weight = s1*100.00/ 4000000      # calulating percentage of weight present in the final block that the minor receives
+    percentage_of_weight = s1*100.00/ 4000000      
+    # calulating percentage of weight present in the final block that the minor receives
     print("Total number of transaction in the final block: "+ str(count) )
     print("Total weight of the final block: " + str(s1))
     print("Total(maximum) fees of the final block: " + str(s))
